@@ -1,4 +1,3 @@
-const LoadingNewIssuePage = () => {
-	return <div>loading...</div>;
-};
-export default LoadingNewIssuePage;
+import IssueFormSkeleton from "../_components/IssueFormSkeleton";
+
+export default IssueFormSkeleton;

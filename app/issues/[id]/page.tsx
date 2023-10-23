@@ -1,8 +1,9 @@
-import IssueStatusBadge from "@/app/components/IssueStatusBadge";
 import prisma from "@/prisma/client";
-import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Box, Flex, Grid } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
-import ReactMarkDown from "react-markdown";
+import DeleteIssueButton from "./DeleteIssueButton";
+import EditIssueButton from "./EditIssueButton";
+import IssueDetails from "./IssueDetails";
 
 interface Props {
 	params: {
@@ -22,16 +23,17 @@ const IssueDetailPage = async ({ params: { id } }: Props) => {
 	}
 
 	return (
-		<div>
-			<Heading>{issue.title}</Heading>
-			<Flex gap="3" my="2">
-				<IssueStatusBadge status={issue.status} />
-				<Text>{issue.createdAt.toDateString()}</Text>
-			</Flex>
-			<Card className="prose" mt="4">
-				<ReactMarkDown>{issue.description}</ReactMarkDown>
-			</Card>
-		</div>
+		<Grid columns={{ initial: "1", sm: "5" }} gap="5">
+			<Box className="md:col-span-4">
+				<IssueDetails issue={issue} />
+			</Box>
+			<Box className="col-span-1">
+				<Flex direction="column" gap="4">
+					<EditIssueButton issueId={issue.id} />
+					<DeleteIssueButton issueId={issue.id} />
+				</Flex>
+			</Box>
+		</Grid>
 	);
 };
 export default IssueDetailPage;
