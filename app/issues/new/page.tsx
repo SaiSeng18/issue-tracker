@@ -8,7 +8,7 @@ const IssueForm = dynamic(() => import("../_components/IssueForm"), {
 	loading: () => <IssueFormSkeleton />,
 });
 
-const NewIssuePage = () => {
+const NewIssuePage = async () => {
 	return <IssueForm />;
 };
 export default NewIssuePage;

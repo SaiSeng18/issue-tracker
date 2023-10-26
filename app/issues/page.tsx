@@ -9,7 +9,6 @@ export const dynamic = "force-dynamic";
 
 const IssuesPage = async () => {
 	const issues = await prisma.issue.findMany();
-
 	return (
 		<div>
 			<IssueActions />

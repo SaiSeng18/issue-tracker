@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "react-loading-skeleton/dist/skeleton.css";
 import NavBar from "./NavBar";
+import QueryClientProvider from "./QueryClientProvider";
+import AuthProvider from "./auth/AuthProvider";
 import "./globals.css";
 import "./theme-config.css";
 
@@ -26,13 +28,17 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.variable}>
-				<Theme appearance="light" accentColor="iris">
-					<NavBar />
-					<main className="p-5">
-						<Container>{children}</Container>
-					</main>
-					{/* <ThemePanel /> */}
-				</Theme>
+				<QueryClientProvider>
+					<AuthProvider>
+						<Theme appearance="light" accentColor="iris">
+							<NavBar />
+							<main className="p-5">
+								<Container>{children}</Container>
+							</main>
+							{/* <ThemePanel /> */}
+						</Theme>
+					</AuthProvider>
+				</QueryClientProvider>
 			</body>
 		</html>
 	);
