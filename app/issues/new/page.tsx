@@ -9,6 +9,12 @@ const IssueForm = dynamic(() => import("../_components/IssueForm"), {
 });
 
 const NewIssuePage = async () => {
+	// const session = await getServerSession(authOptions);
+
+	// if (!session) {
+	// 	redirect("/api/auth/signin");
+	// }
+
 	return <IssueForm />;
 };
 export default NewIssuePage;

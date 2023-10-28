@@ -6,12 +6,13 @@ import { issueSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
 import { Button, Callout, TextField } from "@radix-ui/themes";
+import MDEditor from "@uiw/react-md-editor";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import SimpleMDE from "react-simplemde-editor";
+// import SimpleMDE from "react-simplemde-editor";
 import z from "zod";
 
 // const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
@@ -72,7 +73,16 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
 					name="description"
 					control={control}
 					defaultValue={issue?.description}
-					render={({ field }) => <SimpleMDE placeholder="Description" {...field} />}
+					render={({ field }) => (
+						// <SimpleMDE placeholder="Description" {...field} />
+						<MDEditor
+							placeholder="Description"
+							{...field}
+							height={400}
+							data-color-mode="light"
+							preview="edit"
+						/>
+					)}
 				/>
 
 				<ErrorMessage>{errors.description?.message}</ErrorMessage>

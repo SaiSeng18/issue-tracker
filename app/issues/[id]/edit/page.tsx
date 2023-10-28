@@ -15,6 +15,12 @@ interface Props {
 }
 
 const EditIssuePage = async ({ params }: Props) => {
+	// const session = await getServerSession(authOptions);
+
+	// if (!session) {
+	// 	redirect("/api/auth/signin");
+	// }
+
 	const issue = await prisma.issue.findUnique({
 		where: {
 			id: parseInt(params.id),

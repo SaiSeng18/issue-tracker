@@ -1,7 +1,10 @@
 import IssueStatusBadge from "@/app/components/IssueStatusBadge";
 import { Issue } from "@prisma/client";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import "highlight.js/styles/github.css";
 import ReactMarkDown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
 
 const IssueDetails = ({ issue }: { issue: Issue }) => {
 	return (
@@ -12,7 +15,9 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
 				<Text>{issue.createdAt.toDateString()}</Text>
 			</Flex>
 			<Card className="prose max-w-full" mt="4">
-				<ReactMarkDown>{issue.description}</ReactMarkDown>
+				<ReactMarkDown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+					{issue.description}
+				</ReactMarkDown>
 			</Card>
 		</>
 	);
