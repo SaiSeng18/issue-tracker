@@ -63,7 +63,7 @@ const LogoutAlert = ({
 					</Button>
 
 					<AlertDialog.Action>
-						<Button variant="solid" color="red" onClick={() => signOut()}>
+						<Button color="red" onClick={() => signOut()}>
 							Logout
 						</Button>
 					</AlertDialog.Action>

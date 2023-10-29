@@ -1,3 +1,8 @@
 .radix-themes {
 	--default-font-family: var(--font-inter) !important;
 }
+
+.rt-BaseButton:where(.rt-variant-solid) {
+	background-color: var(--accent-9) !important;
+	color: var(--accent-9-contrast) !important;
+}
