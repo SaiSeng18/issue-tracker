@@ -1,9 +1,11 @@
 // import IssueForm from "../_components/IssueForm";
 
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import IssueFormSkeleton from "./loading";
 
-const IssueForm = dynamic(() => import("../_components/IssueForm"), {
+export const dynamic = "force-dynamic";
+
+const IssueForm = nextDynamic(() => import("../_components/IssueForm"), {
 	ssr: false,
 	loading: () => <IssueFormSkeleton />,
 });
